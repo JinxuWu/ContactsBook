@@ -1,8 +1,8 @@
 #include<iostream>
 #include<string>
 using namespace std;
-#define max 1000//¶¨Òåºê³£Á¿
-//ÁªÏµÈË½á¹¹Ìå±äÁ¿
+#define max 1000//å®šä¹‰å®å¸¸é‡
+//è”ç³»äººç»“æ„ä½“å˜é‡
 struct person{
 	string s_name;
 	string s_sex;
@@ -10,16 +10,16 @@ struct person{
 	string s_address;
 	string s_number;
 };
-//Í¨Ñ¶Â¼½á¹¹Ìå±äÁ¿
+//é€šè®¯å½•ç»“æ„ä½“å˜é‡
 struct Contactsbook{
 	person s_parray[max];
 	int s_size;
 };
-Contactsbook book;//´´½¨Í¨Ñ¶Â¼±äÁ¿Êµ²Î
-//Ìí¼ÓÁªÏµÈËº¯Êı
+Contactsbook book;//åˆ›å»ºé€šè®¯å½•å˜é‡å®å‚
+//æ·»åŠ è”ç³»äººå‡½æ•°
 int size = 0;
 void add(Contactsbook * book){
-	//ÅĞ¶ÏÈİÁ¿Çé¿ö
+	//åˆ¤æ–­å®¹é‡æƒ…å†µ
 	if (book->s_size == max)
 	{
 		cout << "No more spaces for new contact!";
@@ -33,7 +33,7 @@ void add(Contactsbook * book){
 		string number;
 		string s;
 		cout << "Please input a name:\n";
-		getline(cin, s);//½ÓÊÕ»º³åÇø
+		getline(cin, s);//æ¥æ”¶ç¼“å†²åŒº
 		getline(cin, name);
 		book->s_parray[book->s_size].s_name = name;
 		cout << "Please input the sex:\n";
@@ -41,9 +41,10 @@ void add(Contactsbook * book){
 		book->s_parray[book->s_size].s_sex = sex;
 		cout << "Please input the age:\n";
 		cin >> age;
+		if(
 		book->s_parray[book->s_size].s_age = age;
 		cout << "Please input the address:\n";
-		getline(cin, s);//½ÓÊÕ»º³åÇø(¿ÉÒÔÓÃignoreµ«ÊÇÎÒÈÏÎªÕâÀï¸ü¼ò±ã£©
+		getline(cin, s);//æ¥æ”¶ç¼“å†²åŒº(å¯ä»¥ç”¨ignoreä½†æ˜¯æˆ‘è®¤ä¸ºè¿™é‡Œæ›´ç®€ä¾¿ï¼‰
 		getline(cin, address);
 		book->s_parray[book->s_size].s_address = address;
 		cout << "Please input the number:\n";
@@ -53,7 +54,7 @@ void add(Contactsbook * book){
 		book->s_size++;
 	}
 }
-//Õ¹Ê¾ËùÓĞÁªÏµÈËº¯Êı
+//å±•ç¤ºæ‰€æœ‰è”ç³»äººå‡½æ•°
 void showall(Contactsbook * book){
 	if (book->s_size ==0)
 	{
@@ -72,7 +73,7 @@ void showall(Contactsbook * book){
 		}
 	}
 }
-//ËÑË÷º¯Êı
+//æœç´¢å‡½æ•°
 void search(Contactsbook * book){
 	string name;
 	cout << "Please input the name of the contact to search:\n";
@@ -98,7 +99,7 @@ void search(Contactsbook * book){
 		cout << "No such name in the contactsbook! Please try again!\n";
 	}
 }
-//¼ì²éº¯Êı(ĞÕÃû£©
+//æ£€æŸ¥å‡½æ•°(å§“åï¼‰
 int check_name(Contactsbook * book, string name){
 	for (int i = 0; i < book->s_size; i++)
 	{
@@ -109,7 +110,7 @@ int check_name(Contactsbook * book, string name){
 	}
 	return -1;
 }
-//¼ì²éº¯Êı£¨±àºÅ£©
+//æ£€æŸ¥å‡½æ•°ï¼ˆç¼–å·ï¼‰
 int check_num(Contactsbook * book, int num){
 	for (int i = 0; i < book->s_size; i++)
 	{
@@ -123,7 +124,7 @@ int check_num(Contactsbook * book, int num){
 		}
 	}
 }
-//É¾³ıº¯Êı
+//åˆ é™¤å‡½æ•°
 void dlt(Contactsbook * book){
 	string name;
 	cin >> name;
@@ -136,7 +137,7 @@ void dlt(Contactsbook * book){
 		cout << "age:" << book->s_parray[ret].s_age << endl;
 		cout << "address:" << book->s_parray[ret].s_address << endl;
 		cout << "number:" << book->s_parray[ret].s_number << endl;
-		flag0://Îó²Ù×÷±£»¤
+		flag0://è¯¯æ“ä½œä¿æŠ¤
 		cout << "Sure to delete?(1 for yes,0 for no)\n";
 		int ans;
 		cin >> ans;
@@ -179,7 +180,7 @@ void revise(Contactsbook * book){
 	if (ret != -1)
 	{
 		cout << "Please input a name:\n";
-		getline(cin, name);//½ÓÊÕ»º³åÇø
+		getline(cin, name);//æ¥æ”¶ç¼“å†²åŒº
 		getline(cin, name);
 		book->s_parray[ret-1].s_name = name;
 		cout << "Please input the sex:\n";
@@ -197,6 +198,9 @@ void revise(Contactsbook * book){
 		book->s_parray[ret-1].s_number = number;
 		cout << "Contacted revised successfully!\n";
 	}
+	else
+	{
+		cout<<"No contact found,please try again!\n";
 }
 void clr(Contactsbook * book){
 	if (book->s_size == 0)
@@ -225,12 +229,12 @@ void clr(Contactsbook * book){
 		}
 	}
 }
-//Ñ¡Ïîº¯Êı
+//é€‰é¡¹å‡½æ•°
 void option(int x){
 	switch (x){
 	case 1:
 		cout << "Adding new contact:\n";
-		add(&book);//µ÷ÓÃÌí¼Óº¯Êı
+		add(&book);//è°ƒç”¨æ·»åŠ å‡½æ•°
 		break;
 	case 2:
 		cout << "Showing all contacts:\n" << endl;
@@ -256,7 +260,7 @@ void option(int x){
 		break;
 	}
 }
-//Õ¹Ê¾²Ëµ¥
+//å±•ç¤ºèœå•
 void showmenu(){
 	cout << "ContactsBook\n"
 		<< "1.Adding new contact\n"
@@ -270,7 +274,7 @@ void showmenu(){
 int main(){
 	bool exit = 0;
 	while (!exit){
-		showmenu();//µ÷ÓÃÕ¹Ê¾²Ëµ¥º¯Êı
+		showmenu();//è°ƒç”¨å±•ç¤ºèœå•å‡½æ•°
 		int num = 0;
 		cin >> num;
 		if (num == 7)
@@ -282,9 +286,9 @@ int main(){
 		else
 		{
 			option(num);
-			system("pause");//µ÷ÓÃÑ¡Ïîº¯Êı
+			system("pause");//è°ƒç”¨é€‰é¡¹å‡½æ•°
 		}
-		system("cls");//ÇåÆÁ
+		system("cls");//æ¸…å±
 		/*cout<<*/
 	}
 	return 0;
@@ -292,4 +296,5 @@ int main(){
 /*
 10.2.2025
 JinxuWu,CQUPT,SE2025
+
 */
